@@ -21,6 +21,7 @@ adaptive.mcmc <- function(lprior, llikelihood, nburn,
                           initial, nbatch, blen = 1, outfun = NULL, 
                           acceptfun = NULL, verbose = FALSE, ...)
 {
+  testcode <- 10
   if (is.null(outfun))
     outfun <- function() { NULL }
   if (is.null(acceptfun))
