@@ -1,0 +1,45 @@
+Package: fluEvidenceSynthesis
+Type: Package
+Title: Flu Evidence Synthesis: Analysing Effectiveness of Vaccine Strategies
+Version: 1.1.0
+Date: 2019-10-09
+Author: Marc Baguelin, Edwin van Leeuwen
+Maintainer: Edwin van Leeuwen <edwinvanl@gmail.com>
+Description: Package to evaluate the efficacy of different vaccination
+    programmes. The method uses provided data on Influenze Like Illness counts,
+    lab results on actual Influenza occurrence classified by strain and the current
+    vaccine programme, uptake rates to fit an epidemiological model that takes into
+    account different age groups and risk groups. The fitted results can then be
+    used to predict the outcome of changes to the vaccination programme.
+License: GPL-3
+LinkingTo: Rcpp, BH, RcppEigen
+Depends:
+    R (>= 3.1.0),
+    gtable,
+    scales,
+    lazyeval,
+    tibble,
+    dplyr,
+    lubridate
+Imports:
+    Rcpp (>= 0.11.6),
+    ggplot2,
+    BH,
+    RcppEigen,
+    magrittr
+Suggests:
+    testthat,
+    rjson,
+    MASS,
+    ISOweek,
+    knitr,
+    moments,
+    rmarkdown,
+    pander,
+    dplyr,
+    tidyr
+SystemRequirements: C++11
+LazyData: true
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
+Encoding: UTF-8

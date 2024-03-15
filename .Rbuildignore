@@ -1,0 +1,12 @@
+autotest.sh
+install.sh
+build.sh
+travis.sh
+.travis.yml
+^.*\.Rproj$
+^\.Rproj\.user$
+.*_cache
+.*_files
+.*.tar.gz
+test.log
+.clang-format
