@@ -1,4 +1,4 @@
 library(testthat)
-library(fluEvidenceSynthesis)
+library(shinfluevidence)
 
-test_check("fluEvidenceSynthesis")
+test_check("shinfluevidence")

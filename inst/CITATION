@@ -1,7 +1,7 @@
-citHeader("To cite fluEvidenceSynthesis in publications use:")
+citHeader("To cite shinfluevidence in publications use:")
 
 citEntry(entry = "Article",
-  title        = "fluEvidenceSynthesis: An R package for evidence synthesis based analysis of epidemiological outbreaks",
+  title        = "shinfluevidence: An R package for evidence synthesis based analysis of epidemiological outbreaks",
   author       = personList(as.person("Edwin van Leeuwen"),
                    as.person("Petra Klepac"),
                    as.person("Dominic Thorrington"),

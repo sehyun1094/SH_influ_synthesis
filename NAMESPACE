@@ -1,4 +1,4 @@
-useDynLib(fluEvidenceSynthesis)
+useDynLib(shinfluevidence)
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
 importFrom(ggplot2, ggproto, aes, Stat)
