@@ -172,8 +172,8 @@ namespace flu
         namespace bt = boost::posix_time;
 
         double h_step = dt.hours()/24.0;
-
-        printf("Start time: %s\n", start_time.c_str());
+        std::string start_time_str = boost::posix_time::to_simple_string(start_time)
+        printf("Start time: %s\n", start_time_str.c_str());
         const size_t nag = transmission_regular.cols();
         Eigen::VectorXd results = Eigen::VectorXd::Zero(nag*3);
 
