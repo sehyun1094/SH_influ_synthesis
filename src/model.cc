@@ -251,6 +251,7 @@ namespace flu
     {
         namespace bt = boost::posix_time;
  
+        contact_regular.setZero();
         assert( s_profile.size() == contact_regular.rows() );
 
         const size_t nag = contact_regular.rows(); // No. of age groups
@@ -268,7 +269,6 @@ namespace flu
 
         int date_id = -1;
 
-        contact_regular.setZero();
 
         /*initialisation, transmission matrix*/
         Eigen::MatrixXd transmission_regular(contact_regular);
