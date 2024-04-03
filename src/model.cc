@@ -268,6 +268,8 @@ namespace flu
 
         int date_id = -1;
 
+        contact_regular.setZero();
+
         /*initialisation, transmission matrix*/
         Eigen::MatrixXd transmission_regular(contact_regular);
         for(int i=0;i<transmission_regular.rows();i++)
