@@ -26,7 +26,7 @@ StatCI <- ggproto("StatCI", Stat,
 #' 
 #' @inheritParams geom_polygon
 #' 
-#' sh_influ_synthesis
+#' shinflusynthesis
 #' @param mapping The aesthetic mapping, usually constructed with aes or aes_string. Only needs to be set at the layer level if you are overriding the plot defaults.
 #' @param data A layer specific dataset - only needed if you want to override the plot defaults.
 #' @param geom The geometric object to use display the data

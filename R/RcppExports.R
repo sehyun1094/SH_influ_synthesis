@@ -2,7 +2,7 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 .inference_cpp_with_covariance <- function(demography, age_group_limits, ili, mon_pop, n_pos, n_samples, vaccine_calendar, polymod_data, initial_parameters, initial_contact_ids, means, covariance, covariance_weight, mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index, susceptibility_index, initial_infected_index, lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn = 0L, nbatch = 1000L, blen = 1L, abs_err = 1e-5) {
-    .Call('_sh_influ_synthesis_inference_cppWithCovariance', PACKAGE = 'sh_influ_synthesis', demography, age_group_limits, ili, mon_pop, n_pos, n_samples, vaccine_calendar, polymod_data, initial_parameters, initial_contact_ids, means, covariance, covariance_weight, mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index, susceptibility_index, initial_infected_index, lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn, nbatch, blen, abs_err)
+    .Call('_shinflusynthesis_inference_cppWithCovariance', PACKAGE = 'shinflusynthesis', demography, age_group_limits, ili, mon_pop, n_pos, n_samples, vaccine_calendar, polymod_data, initial_parameters, initial_contact_ids, means, covariance, covariance_weight, mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index, susceptibility_index, initial_infected_index, lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn, nbatch, blen, abs_err)
 }
 
 #' MCMC based inference of the parameter values given the different data sets
@@ -26,7 +26,7 @@
 #' 
 #' @return Returns a list with the accepted samples and the corresponding llikelihood values and a matrix (contact.ids) containing the ids (row number) of the contacts data used to build the contact matrix.
 .inference_cpp <- function(demography, age_group_limits, ili, mon_pop, n_pos, n_samples, vaccine_calendar, polymod_data, initial, mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index, susceptibility_index, initial_infected_index, lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn = 0L, nbatch = 1000L, blen = 1L, abs_err = 1e-5) {
-    .Call('_sh_influ_synthesis_inference_cpp', PACKAGE = 'sh_influ_synthesis', demography, age_group_limits, ili, mon_pop, n_pos, n_samples, vaccine_calendar, polymod_data, initial, mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index, susceptibility_index, initial_infected_index, lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn, nbatch, blen, abs_err)
+    .Call('_shinflusynthesis_inference_cpp', PACKAGE = 'shinflusynthesis', demography, age_group_limits, ili, mon_pop, n_pos, n_samples, vaccine_calendar, polymod_data, initial, mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index, susceptibility_index, initial_infected_index, lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn, nbatch, blen, abs_err)
 }
 
 #' Probability density function for multinomial distribution
@@ -39,7 +39,7 @@
 #' @return The probability of getting the counts, given the total size and probability of drawing each.
 #'
 dmultinom.cpp <- function(x, size, prob, use_log = FALSE) {
-    .Call('_sh_influ_synthesis_dmultinomialCPP', PACKAGE = 'sh_influ_synthesis', x, size, prob, use_log)
+    .Call('_shinflusynthesis_dmultinomialCPP', PACKAGE = 'shinflusynthesis', x, size, prob, use_log)
 }
 
 #' Update means when a new posterior sample is calculated
@@ -50,7 +50,7 @@ dmultinom.cpp <- function(x, size, prob, use_log = FALSE) {
 #' @return The updated means given the new parameter sample
 #'
 .updateMeans <- function(means, v, n) {
-    .Call('_sh_influ_synthesis_updateMeans', PACKAGE = 'sh_influ_synthesis', means, v, n)
+    .Call('_shinflusynthesis_updateMeans', PACKAGE = 'shinflusynthesis', means, v, n)
 }
 
 #' Update covariance matrix of posterior parameters
@@ -63,7 +63,7 @@ dmultinom.cpp <- function(x, size, prob, use_log = FALSE) {
 #' @return The updated covariance matrix given the new parameter sample
 #'
 .updateCovariance <- function(cov, v, means, n) {
-    .Call('_sh_influ_synthesis_updateCovariance', PACKAGE = 'sh_influ_synthesis', cov, v, means, n)
+    .Call('_shinflusynthesis_updateCovariance', PACKAGE = 'shinflusynthesis', cov, v, means, n)
 }
 
 #' Convert given week in given year into an exact date corresponding to the Monday of that week
@@ -73,7 +73,7 @@ dmultinom.cpp <- function(x, size, prob, use_log = FALSE) {
 #' @return The date of the Monday in that week 
 #'
 getTimeFromWeekYear <- function(week, year) {
-    .Call('_sh_influ_synthesis_getTimeFromWeekYear', PACKAGE = 'sh_influ_synthesis', week, year)
+    .Call('_shinflusynthesis_getTimeFromWeekYear', PACKAGE = 'shinflusynthesis', week, year)
 }
 
 #' Run the SEIR model for the given parameters
@@ -89,7 +89,7 @@ getTimeFromWeekYear <- function(week, year) {
 #' @return A data frame with number of new cases after each interval during the year
 #'
 .infection.model <- function(age_sizes, vaccine_calendar, polymod_data, susceptibility, transmissibility, init_pop, infection_delays, interval = 1L) {
-    .Call('_sh_influ_synthesis_runSEIRModel', PACKAGE = 'sh_influ_synthesis', age_sizes, vaccine_calendar, polymod_data, susceptibility, transmissibility, init_pop, infection_delays, interval)
+    .Call('_shinflusynthesis_runSEIRModel', PACKAGE = 'shinflusynthesis', age_sizes, vaccine_calendar, polymod_data, susceptibility, transmissibility, init_pop, infection_delays, interval)
 }
 
 #' Run the SEIR model for the given parameters
@@ -105,7 +105,7 @@ getTimeFromWeekYear <- function(week, year) {
 #' @return A data frame with number of new cases after each interval during the year
 #'
 infectionODEs.cpp <- function(population, initial_infected, vaccine_calendar, contact_matrix, susceptibility, transmissibility, infection_delays, dates) {
-    .Call('_sh_influ_synthesis_infectionODEs', PACKAGE = 'sh_influ_synthesis', population, initial_infected, vaccine_calendar, contact_matrix, susceptibility, transmissibility, infection_delays, dates)
+    .Call('_shinflusynthesis_infectionODEs', PACKAGE = 'shinflusynthesis', population, initial_infected, vaccine_calendar, contact_matrix, susceptibility, transmissibility, infection_delays, dates)
 }
 
 #' Returns log likelihood of the predicted number of cases given the data for that week
@@ -124,7 +124,7 @@ infectionODEs.cpp <- function(population, initial_infected, vaccine_calendar, co
 #' @seealso{\link{total_log_likelihood_cases}}
 #'
 .log_likelihood_cases <- function(epsilon, psi, predicted, population_size, ili_cases, ili_monitored, confirmed_positive, confirmed_samples) {
-    .Call('_sh_influ_synthesis_log_likelihood', PACKAGE = 'sh_influ_synthesis', epsilon, psi, predicted, population_size, ili_cases, ili_monitored, confirmed_positive, confirmed_samples)
+    .Call('_shinflusynthesis_log_likelihood', PACKAGE = 'shinflusynthesis', epsilon, psi, predicted, population_size, ili_cases, ili_monitored, confirmed_positive, confirmed_samples)
 }
 
 #' Returns log likelihood of the predicted number of cases given the data
@@ -152,7 +152,7 @@ infectionODEs.cpp <- function(population, initial_infected, vaccine_calendar, co
 #'
 #'
 log_likelihood_cases <- function(epsilon, psi, predicted, population_size, ili_cases, ili_monitored, confirmed_positive, confirmed_samples, abs_err = 1e-5) {
-    .Call('_sh_influ_synthesis_total_log_likelihood', PACKAGE = 'sh_influ_synthesis', epsilon, psi, predicted, population_size, ili_cases, ili_monitored, confirmed_positive, confirmed_samples, abs_err)
+    .Call('_shinflusynthesis_total_log_likelihood', PACKAGE = 'shinflusynthesis', epsilon, psi, predicted, population_size, ili_cases, ili_monitored, confirmed_positive, confirmed_samples, abs_err)
 }
 
 #' Run an ODE model with the runge-kutta solver for testing purposes
@@ -161,7 +161,7 @@ log_likelihood_cases <- function(epsilon, psi, predicted, population_size, ili_c
 #' @param h_step The starting integration delta size
 #'
 .runRKF <- function(step_size = 0.1, h_step = 0.01) {
-    .Call('_sh_influ_synthesis_runPredatorPrey', PACKAGE = 'sh_influ_synthesis', step_size, h_step)
+    .Call('_shinflusynthesis_runPredatorPrey', PACKAGE = 'shinflusynthesis', step_size, h_step)
 }
 
 #' Run an ODE model with the simple step wise solver for testing purposes
@@ -170,7 +170,7 @@ log_likelihood_cases <- function(epsilon, psi, predicted, population_size, ili_c
 #' @param h_step The starting integration delta size
 #'
 .runStep <- function(step_size = 0.1, h_step = 1e-5) {
-    .Call('_sh_influ_synthesis_runPredatorPreySimple', PACKAGE = 'sh_influ_synthesis', step_size, h_step)
+    .Call('_shinflusynthesis_runPredatorPreySimple', PACKAGE = 'shinflusynthesis', step_size, h_step)
 }
 
 #' Adaptive MCMC algorithm implemented in C++
@@ -193,7 +193,7 @@ log_likelihood_cases <- function(epsilon, psi, predicted, population_size, ili_c
 #' @seealso \code{\link{adaptive.mcmc}} For a more flexible R frontend to this function.
 #'
 adaptive.mcmc.cpp <- function(lprior, llikelihood, outfun, acceptfun, nburn, initial, nbatch, blen = 1L, verbose = FALSE) {
-    .Call('_sh_influ_synthesis_adaptiveMCMCR', PACKAGE = 'sh_influ_synthesis', lprior, llikelihood, outfun, acceptfun, nburn, initial, nbatch, blen, verbose)
+    .Call('_shinflusynthesis_adaptiveMCMCR', PACKAGE = 'shinflusynthesis', lprior, llikelihood, outfun, acceptfun, nburn, initial, nbatch, blen, verbose)
 }
 
 #' Adaptive MCMC algorithm implemented in C++
@@ -218,7 +218,7 @@ adaptive.mcmc.cpp <- function(lprior, llikelihood, outfun, acceptfun, nburn, ini
 #' @seealso \code{\link{adaptive.mcmc}} For a more flexible R frontend to this function.
 #'
 .adaptive.mcmc.proposal <- function(lprior, llikelihood, outfun, acceptfun, nburn, means, covariance, covariance_weight, nbatch, blen = 1L, verbose = FALSE) {
-    .Call('_sh_influ_synthesis_adaptiveMCMCRCovariance', PACKAGE = 'sh_influ_synthesis', lprior, llikelihood, outfun, acceptfun, nburn, means, covariance, covariance_weight, nbatch, blen, verbose)
+    .Call('_shinflusynthesis_adaptiveMCMCRCovariance', PACKAGE = 'shinflusynthesis', lprior, llikelihood, outfun, acceptfun, nburn, means, covariance, covariance_weight, nbatch, blen, verbose)
 }
 
 #' Create a contact matrix based on polymod data.
@@ -230,7 +230,7 @@ adaptive.mcmc.cpp <- function(lprior, llikelihood, outfun, acceptfun, nburn, ini
 #' @return Returns a symmetric matrix with the frequency of contact between each age group
 #'
 contact_matrix <- function(polymod_data, demography, age_group_limits = as.numeric( c(             1, 5, 15, 25, 45, 65 ))) {
-    .Call('_sh_influ_synthesis_contact_matrix', PACKAGE = 'sh_influ_synthesis', polymod_data, demography, age_group_limits)
+    .Call('_shinflusynthesis_contact_matrix', PACKAGE = 'shinflusynthesis', polymod_data, demography, age_group_limits)
 }
 
 #' Create age group level description based on passed upper limits
@@ -242,7 +242,7 @@ contact_matrix <- function(polymod_data, demography, age_group_limits = as.numer
 #' @return Vector representing the age group(s)
 #'
 age_group_levels <- function(limits = as.numeric( c())) {
-    .Call('_sh_influ_synthesis_age_group_levels', PACKAGE = 'sh_influ_synthesis', limits)
+    .Call('_shinflusynthesis_age_group_levels', PACKAGE = 'shinflusynthesis', limits)
 }
 
 #' Extract upper age group limits from age group level description
@@ -256,7 +256,7 @@ age_group_levels <- function(limits = as.numeric( c())) {
 #' @seealso \code{\link{age_group_levels}} For the reverse of this function.
 #'
 age_group_limits <- function(levels) {
-    .Call('_sh_influ_synthesis_age_group_limits', PACKAGE = 'sh_influ_synthesis', levels)
+    .Call('_shinflusynthesis_age_group_limits', PACKAGE = 'shinflusynthesis', levels)
 }
 
 #' Age as age group
@@ -269,7 +269,7 @@ age_group_limits <- function(levels) {
 #' @return Factors representing the age group(s)
 #'
 as_age_group <- function(age, limits = as.numeric( c(             1, 5, 15, 25, 45, 65 ))) {
-    .Call('_sh_influ_synthesis_as_age_group', PACKAGE = 'sh_influ_synthesis', age, limits)
+    .Call('_shinflusynthesis_as_age_group', PACKAGE = 'shinflusynthesis', age, limits)
 }
 
 #' @title Stratify the population by age
@@ -282,7 +282,7 @@ as_age_group <- function(age, limits = as.numeric( c(             1, 5, 15, 25, 
 #' @return A vector with the population in each age group.
 #'
 stratify_by_age <- function(age_sizes, limits = as.numeric( c(             1, 5, 15, 25, 45, 65 ))) {
-    .Call('_sh_influ_synthesis_separate_into_age_groups', PACKAGE = 'sh_influ_synthesis', age_sizes, limits)
+    .Call('_shinflusynthesis_separate_into_age_groups', PACKAGE = 'shinflusynthesis', age_sizes, limits)
 }
 
 #' @title Stratify age groups into different risk groups
@@ -295,7 +295,7 @@ stratify_by_age <- function(age_sizes, limits = as.numeric( c(             1, 5,
 #' @return A vector with the population in the low risk groups, followed by the other risk groups. The length is equal to the number of age groups times the number of risk groups (including the low risk group).
 #'
 .stratify_by_risk <- function(age_groups, risk_ratios, no_risk_groups) {
-    .Call('_sh_influ_synthesis_stratify_by_risk', PACKAGE = 'sh_influ_synthesis', age_groups, risk_ratios, no_risk_groups)
+    .Call('_shinflusynthesis_stratify_by_risk', PACKAGE = 'shinflusynthesis', age_groups, risk_ratios, no_risk_groups)
 }
 
 #' @title Calculate R0 from transmission rate
@@ -313,7 +313,7 @@ stratify_by_age <- function(age_sizes, limits = as.numeric( c(             1, 5,
 #'
 #' @return Returns the R0
 as_R0 <- function(transmission_rate, contact_matrix, age_groups, duration = 1.8) {
-    .Call('_sh_influ_synthesis_as_R0', PACKAGE = 'sh_influ_synthesis', transmission_rate, contact_matrix, age_groups, duration)
+    .Call('_shinflusynthesis_as_R0', PACKAGE = 'shinflusynthesis', transmission_rate, contact_matrix, age_groups, duration)
 }
 
 #' @title Calculate transmission rate from R0 
@@ -331,7 +331,7 @@ as_R0 <- function(transmission_rate, contact_matrix, age_groups, duration = 1.8)
 #'
 #' @return Returns the transmission rate 
 as_transmission_rate <- function(R0, contact_matrix, age_groups, duration = 1.8) {
-    .Call('_sh_influ_synthesis_as_transmission_rate', PACKAGE = 'sh_influ_synthesis', R0, contact_matrix, age_groups, duration)
+    .Call('_shinflusynthesis_as_transmission_rate', PACKAGE = 'shinflusynthesis', R0, contact_matrix, age_groups, duration)
 }
 
 #' Test multinormal implementation 
@@ -341,7 +341,7 @@ as_transmission_rate <- function(R0, contact_matrix, age_groups, duration = 1.8)
 #'
 #' @return A random draw 
 .testRMultinormal <- function(mean, cov) {
-    .Call('_sh_influ_synthesis_testRMultinormal', PACKAGE = 'sh_influ_synthesis', mean, cov)
+    .Call('_shinflusynthesis_testRMultinormal', PACKAGE = 'shinflusynthesis', mean, cov)
 }
 
 #' Calculate number of influenza cases given a vaccination strategy
@@ -361,6 +361,6 @@ as_transmission_rate <- function(R0, contact_matrix, age_groups, duration = 1.8)
 #' @return A data frame with the total number of influenza cases in that year
 #'
 vaccinationScenario <- function(age_sizes, vaccine_calendar, polymod_data, contact_ids, parameters) {
-    .Call('_sh_influ_synthesis_vaccinationScenario', PACKAGE = 'sh_influ_synthesis', age_sizes, vaccine_calendar, polymod_data, contact_ids, parameters)
+    .Call('_shinflusynthesis_vaccinationScenario', PACKAGE = 'shinflusynthesis', age_sizes, vaccine_calendar, polymod_data, contact_ids, parameters)
 }
 
