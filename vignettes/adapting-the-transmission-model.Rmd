@@ -241,7 +241,7 @@ infection_odin <- function(population, initial_infected, vaccine_calendar, conta
 First we setup the demographic and vaccination data. For further details on this code see the [modelling vignette](http://blackedder.github.io/flu-evidence-synthesis/modelling.html)
 
 ```{r setup_data, cache = TRUE}
-library(fluEvidenceSynthesis)
+library(sh_influ_synthesis)
 data(demography)
 ag <- stratify_by_age(demography, limits = c(65))
 

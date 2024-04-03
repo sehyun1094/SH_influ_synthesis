@@ -1,5 +1,5 @@
 ---
-title: "Using fluEvidenceSynthesis to predict efficacy of different vaccination scenarios"
+title: "Using sh_influ_synthesis to predict efficacy of different vaccination scenarios"
 author: "Edwin van Leeuwen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -12,7 +12,7 @@ vignette: >
 ```{r load-libraries, include=F}
 library(dplyr)
 library(pander)
-library(fluEvidenceSynthesis)
+library(sh_influ_synthesis)
 ```
 
 # Introduction
@@ -36,7 +36,7 @@ pander(head(coverage), caption = "The vaccination coverage rates in the UK in se
 The `as_vaccination_calendar()` function can be used to build a vaccination scenario object based on coverage data. In the example below we use the coverage rates for the 2007-08 season in the UK. If there are multiple age groups and risk groups then the layout in general is expected to be all age groups for one risk group, followed by the age groups for the second risk group etc. In the example below the efficacy of the under 65 at low risk is expected to be $.7$ and for the 65+ the efficacy is $.4$.
 
 ```{r as_vaccination_calendar}
-library("fluEvidenceSynthesis")
+library("sh_influ_synthesis")
 data(coverage)
 # Coverage rates for respectively low risk <65, low risk 65+,
 # high risk <65 and 65+. Original is in percentages. Here converted to fraction
@@ -52,7 +52,7 @@ vaccine_calendar <- as_vaccination_calendar(efficacy = c(0.7, 0.4, 0.7, 0.4),
 
 Below we show how to create a vaccination calendar for 7 age groups and 3 risk groups. We assume at risk young children and 65 year and older get a vaccine.
 ```{r}
-library("fluEvidenceSynthesis")
+library("sh_influ_synthesis")
 
 efficacy <- rep(c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.3), 3)
 coverage <- matrix(rep(0,21*4),ncol = 21)

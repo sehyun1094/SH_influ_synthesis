@@ -1,5 +1,5 @@
 ---
-title: "Using fluEvidenceSynthesis to predict efficacy of different vaccination scenarios"
+title: "Using sh_influ_synthesis to predict efficacy of different vaccination scenarios"
 author: "Edwin van Leeuwen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -35,7 +35,7 @@ infectionODEs(population, initial_infected, vaccine_calendar, contact_matrix,
 
 The size of the population size part of each age group and risk group.
 ```{r}
-library(fluEvidenceSynthesis)
+library(sh_influ_synthesis)
 data(demography) # Population divided by age (0 years old, 1 years old, etc.)
 
 # Separate into non elderly (<65) and elderly population
@@ -53,7 +53,7 @@ The resulting vector holds the low risk population by age group (43233795, 49575
 
 The number of people infected at the beginning of the season, again separated into age groups and risk groups.
 ```{r}
-library(fluEvidenceSynthesis)
+library(sh_influ_synthesis)
 ag <- c(1000,1000)
 initial.infected <- stratify_by_risk( ag, matrix(c(0.01,0.4),nrow=1)) # c(990, 600, 10, 400)
 ```
@@ -77,7 +77,7 @@ vaccine_calendar <- as_vaccination_calendar(
 Contact rates between the different age groups.
 
 ```{r}
-library(fluEvidenceSynthesis)
+library(sh_influ_synthesis)
 data(polymod_uk)
 data(demography)
 
