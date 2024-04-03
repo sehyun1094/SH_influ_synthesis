@@ -173,6 +173,7 @@ namespace flu
 
         double h_step = dt.hours()/24.0;
 
+        printf(start_time);
         const size_t nag = transmission_regular.cols();
         Eigen::VectorXd results = Eigen::VectorXd::Zero(nag*3);
 
@@ -271,7 +272,8 @@ namespace flu
         for(int i=0;i<transmission_regular.rows();i++)
         {
             for(int j=0;j<transmission_regular.cols();j++) {
-                transmission_regular(i,j)*=transmissibility*s_profile[i];
+                transmission_regular(i,j)*=0;
+                /*transmission_regular(i,j)*=transmissibility*s_profile[i];*/
             }
         }
 
