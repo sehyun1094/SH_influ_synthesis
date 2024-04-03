@@ -43,10 +43,10 @@ If you also installed the vignettes locally (see above) you can view them using:
 
 ```{r}
 # To list the included vignettes:
-vignette(package="fluEvidenceSynthesis")
+vignette(package="shinfluevidence")
 
 # To open the inference vignette:
-vignette("inference",package="fluEvidenceSynthesis")
+vignette("inference",package="shinfluevidence")
 ```
 
 There is also a presentation available with some more details on the package [here](http://blackedder.github.io/flu-evidence-synthesis/RCoursePackage.html).
