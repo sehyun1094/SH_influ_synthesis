@@ -1,4 +1,4 @@
-Package: shinflusynthesis
+Package: fluEvidenceSynthesis
 Type: Package
 Title: Flu Evidence Synthesis: Analysing Effectiveness of Vaccine Strategies
 Version: 1.1.0

@@ -1,5 +1,5 @@
 ---
-title: "Using shinflusynthesis to infer epidemological parameters."
+title: "Using fluEvidenceSynthesis to infer epidemological parameters."
 author: "Edwin van Leeuwen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -22,7 +22,7 @@ This package implements all the tools needed to analyse and compare the effectiv
 #. Parameter inference using existing model
 #. Simulation of different possible vaccination strategies using the inferred parameters
 
-This vignette will focus on how the shinflusynthesis package can be used to perform the first step of parameter inference.
+This vignette will focus on how the fluEvidenceSynthesis package can be used to perform the first step of parameter inference.
 
 The method we use here combines data from numerous sources that are then used to compute the likelihood of the predicted number of influenza cases in a given week. Given the data and the likelihood function we use MCMC to obtain the posterior distribution of the parameters of an underlying epidemiological model. In this vignette we give practical examples on the required data and how to use the package to perform the MCMC fitting.
 
@@ -44,7 +44,7 @@ The main sets of data needed are the contact data (e.g. from the polymod study),
 
 ```{r prepare_data_example1, cache = T}
 # Here we load the needed data and regroup it from 5 into two age groups.
-library(shinflusynthesis)
+library(fluEvidenceSynthesis)
 data("demography")
 data("polymod_uk")
 data("ili")
@@ -80,7 +80,7 @@ For more details on the input data see `?data_name`, e.g. `?polymod_uk` will giv
 We will use a similar vaccination calendar as the first example in the [vaccination vignette](https://blackedder.github.io/flu-evidence-synthesis/vaccination.html) but simplified to only have one risk group:
 
 ```{r vc_example_1, cache = T}
-library(shinflusynthesis)
+library(fluEvidenceSynthesis)
 data(coverage)
 # Coverage rates for the low risk <65 and low risk 65+
 cov <- coverage[,c("Under.65","X65")]/100.0
@@ -138,7 +138,7 @@ The UK model is more complicated than the example above, because we model 7 diff
 Another detail is that we reduced the models complexity by assuming that age group [0,15) and [15,65) had the same ascertainment rate ($\epsilon$) and susceptibility. To do this we pass a `parameter_map` to the inference function, which will map the needed parameters to certain indices in the parameter list (see `?parameter_mapping` for more details).
 
 ```{r, cache=T}
-library(shinflusynthesis)
+library(fluEvidenceSynthesis)
 data("demography")
 data("polymod_uk")
 data("ili")
@@ -206,7 +206,7 @@ To perform parameter inference we first need to define a function that returns t
 Following these steps we can implement our custom inference function as follows:
 
 ```{r,cache=T}
-library(shinflusynthesis)
+library(fluEvidenceSynthesis)
 
 # The custom inference function. In this example the custom inference function 
 # performs exactly the same inference as the original C++ function (above). 
@@ -356,7 +356,7 @@ ggplot(data=melt(inference.results$batch)) + facet_wrap( ~ Var2, ncol=3, scales=
 Here we plot the credibility intervals of our models. Each plot is the result for one of the seven age groups and shows the number of new cases each week.
 
 ```{r,cache=T, fig.width=5, fig.height=5}
-library(shinflusynthesis)
+library(fluEvidenceSynthesis)
 library(ggplot2)
 
 # Function that runs the model given a set of parameters. Most of the function

@@ -1,8 +1,8 @@
-# shinflusynthesis
+# fluEvidenceSynthesis
 
-This repository contains the shinflusynthesis package which was described in more detail in:
+This repository contains the fluEvidenceSynthesis package which was described in more detail in:
 
-van Leeuwen, Edwin, Petra Klepac, Dominic Thorrington, Richard Pebody, and Marc Baguelin. “shinflusynthesis: An R Package for Evidence Synthesis Based Analysis of Epidemiological Outbreaks.” PLOS Computational Biology 13, no. 11 (2017): e1005838. https://doi.org/10.1371/journal.pcbi.1005838.
+van Leeuwen, Edwin, Petra Klepac, Dominic Thorrington, Richard Pebody, and Marc Baguelin. “FluEvidenceSynthesis: An R Package for Evidence Synthesis Based Analysis of Epidemiological Outbreaks.” PLOS Computational Biology 13, no. 11 (2017): e1005838. https://doi.org/10.1371/journal.pcbi.1005838.
 
 The code is distributed under a GPLv3 license. Please remember to cite the above manuscript when using this code.
 
@@ -18,9 +18,9 @@ install.packages("devtools")
 
 Note that devtools relies on a fairly new R version (>=3.1.0). Devtools also relies on a number of packages and one can run into problems installing it. Please refer to their [documentation](https://github.com/hadley/devtools) when encountering problems.
 
-### shinflusynthesis
+### FluEvidenceSynthesis
 
-Then use devtools to install shinflusynthesis by using the following command:
+Then use devtools to install fluEvidenceSynthesis by using the following command:
 
 ```{r}
 library(devtools)
@@ -43,10 +43,10 @@ If you also installed the vignettes locally (see above) you can view them using:
 
 ```{r}
 # To list the included vignettes:
-vignette(package="shinflusynthesis")
+vignette(package="fluEvidenceSynthesis")
 
 # To open the inference vignette:
-vignette("inference",package="shinflusynthesis")
+vignette("inference",package="fluEvidenceSynthesis")
 ```
 
 There is also a presentation available with some more details on the package [here](http://blackedder.github.io/flu-evidence-synthesis/RCoursePackage.html).

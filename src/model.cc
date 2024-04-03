@@ -181,10 +181,7 @@ namespace flu
 
         auto t = 0.0;
         auto time_left = (end_time-start_time).hours()/24.0;
-        printf("start time :")
-        printf(start_time)
-        printf("end time : ")
-        printf(end_time)
+
         auto ode_func = [&]( const Eigen::VectorXd &y, const double dummy )
         {
             return flu_ode( deltas, y, 
@@ -274,8 +271,7 @@ namespace flu
         for(int i=0;i<transmission_regular.rows();i++)
         {
             for(int j=0;j<transmission_regular.cols();j++) {
-                transmission_regular(i,j)*=0;
-                /*transmission_regular(i,j)*=transmissibility*s_profile[i];*/ 
+                transmission_regular(i,j)*=transmissibility*s_profile[i];
             }
         }
 

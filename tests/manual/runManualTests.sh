@@ -2,8 +2,8 @@
 
 # Always run at least once
 R -e 'Rcpp::compileAttributes(".",verbose=TRUE)';
-# Should actually move needed header in inst/include/shinflusynthesis.h insted of using echo
-R CMD check ../shinflusynthesis
-R CMD INSTALL ../shinflusynthesis
+# Should actually move needed header in inst/include/fluEvidenceSynthesis.h insted of using echo
+R CMD check ../fluEvidenceSynthesis
+R CMD INSTALL ../fluEvidenceSynthesis
 
-R -e 'library(testthat);library(shinflusynthesis);test_dir("tests/manual/")'
+R -e 'library(testthat);library(fluEvidenceSynthesis);test_dir("tests/manual/")'
