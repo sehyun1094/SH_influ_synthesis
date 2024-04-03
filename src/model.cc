@@ -273,11 +273,10 @@ namespace flu
         for(int i=0;i<transmission_regular.rows();i++)
         {
             for(int j=0;j<transmission_regular.cols();j++) {
-                transmission_regular(i,j)*=0;
-                /*transmission_regular(i,j)*=transmissibility*s_profile[i];*/
+                transmission_regular(i,j)*=transmissibility*s_profile[i];
             }
         }
-
+        transmission_regular.setZero();
         /*initialisation, densities.segment(ode_id(nag,VACC_LOW,S),nag),E,I,densities.segment(ode_id(nag,VACC_LOW,R),nag)*/
         for(size_t i=0;i<nag;i++)
         {
