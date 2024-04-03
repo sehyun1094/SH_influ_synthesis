@@ -251,7 +251,6 @@ namespace flu
     {
         namespace bt = boost::posix_time;
  
-        contact_regular.setZero();
         assert( s_profile.size() == contact_regular.rows() );
 
         const size_t nag = contact_regular.rows(); // No. of age groups
