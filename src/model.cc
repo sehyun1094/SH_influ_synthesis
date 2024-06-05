@@ -1,5 +1,5 @@
 #include "model.h"
-
+#include <cmath>  // std::ceil
 #include "ode.h"
 
 inline long double safe_sum_log(long double a, long double b) {
@@ -348,8 +348,8 @@ namespace flu
 
             // make transmission_regular2
             Eigen::MatrixXd transmission_regular2 = transmission_regular;
-            transmission_regular2(1, 1) *= school_rate(step_count, 0);
-            transmission_regular2(2, 2) *= school_rate(step_count, 1);
+            transmission_regular2(1, 1) = std::ceil(transmission_regular2(0, 0) * school_rate(step_count, 0));
+            transmission_regular2(2, 2) = std::ceil(transmission_regular2(1, 1) * school_rate(step_count, 1));
 
 
             auto n_cases = new_cases( densities, current_time,
