@@ -239,8 +239,6 @@ Rcpp::DataFrame infectionODEs(
         datesC.push_back( date_to_ptime( d ) );
     }
 
-    Eigen::MatrixXi school_rate = ;
-
     auto result = flu::infectionODE(
         popv, initial_infected, 
         infection_delays[0], infection_delays[1],
