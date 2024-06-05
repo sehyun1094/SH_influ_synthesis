@@ -267,7 +267,7 @@ inference <- function(demography, ili, mon_pop, n_pos, n_samples,
                                               as.matrix(mapping), risk_ratios$value, 
                                               parameter_map$e, parameter_map$p, parameter_map$t, parameter_map$s, parameter_map$i, 
                                               lprior, pass_prior, lpeak_prior, pass_peak,
-                                              no_age_groups, no_risk_groups, uk_defaults, as.matrix(school_rate), nburn, nbatch, blen, abs_err)
+                                              no_age_groups, no_risk_groups, uk_defaults, school_rate, nburn, nbatch, blen, abs_err)
   } else {
     results <- .inference_cpp(demography, sort(unique(age_group_limits(as.character(age_group_map$from)))),
                               as.matrix(ili), as.matrix(mon_pop), as.matrix(n_pos), as.matrix(n_samples), vaccine_calendar, polymod_data, initial_par, 
@@ -275,7 +275,7 @@ inference <- function(demography, ili, mon_pop, n_pos, n_samples,
                               parameter_map$e, parameter_map$p, parameter_map$t, parameter_map$s, parameter_map$i, 
                               lprior, pass_prior, lpeak_prior, pass_peak,
                               no_age_groups, no_risk_groups, uk_defaults,
-                              as.matrix(school_rate), 
+                              school_rate, 
                               nburn, nbatch, blen, abs_err,
                               )
   }
