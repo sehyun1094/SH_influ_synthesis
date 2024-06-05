@@ -60,7 +60,7 @@ namespace flu
             const vaccine::vaccine_t &vaccine_programme,
             size_t minimal_resolution = 24,
             const boost::posix_time::ptime &starting_time = 
-                getTimeFromWeekYear( 35, 1970 ) ,
+                getTimeFromWeekYear( 35, 1970 ),
             const Eigen::MatrixXi &school_rate );
 
     cases_t infectionODE(
