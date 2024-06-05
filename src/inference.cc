@@ -30,7 +30,7 @@ mcmc_result_inference_t inference_cppWithProposal(
     size_t psi_index, size_t transmissibility_index,
     Eigen::VectorXd susceptibility_index, size_t initial_infected_index,
     Rcpp::Function lprior, bool pass_prior, Rcpp::Function lpeak_prior,
-    bool pass_peak, size_t no_age_groups, size_t no_risk_groups, bool uk_prior,
+    bool pass_peak, size_t no_age_groups, size_t no_risk_groups, bool uk_prior, Eigen::MatrixXi school_rate,
     size_t nburn = 0, size_t nbatch = 1000, size_t blen = 1,
     double abs_err = 1e-5) {
   // Eigen::Matrix<double, Eigen::Dynamic, 3, Eigen::RowMajor> mapping,
@@ -119,7 +119,7 @@ mcmc_result_inference_t inference_cppWithProposal(
   auto result = infectionODE(
       pop_vec, curr_init_inf, time_latent, time_infectious,
       pars_to_susceptibility(curr_parameters), current_contact_regular,
-      curr_parameters[transmissibility_index], vaccine_calendar, 7 * 24);
+      curr_parameters[transmissibility_index], vaccine_calendar, 7 * 24, school_rate);
   /*curr_psi=0.00001;*/
   auto curr_llikelihood = log_likelihood_hyper_poisson(
       pars_to_epsilon(curr_parameters), curr_parameters[psi_index],
@@ -276,7 +276,7 @@ mcmc_result_inference_t inference_cppWithProposal(
       result = infectionODE(
           pop_vec, prop_init_inf, time_latent, time_infectious,
           pars_to_susceptibility(prop_parameters), prop_contact_regular,
-          prop_parameters[transmissibility_index], vaccine_calendar, 7 * 24);
+          prop_parameters[transmissibility_index], vaccine_calendar, 7 * 24, school_rate);
 
       prop_likelihood = 0;
       if (pass_peak) {
@@ -340,8 +340,8 @@ mcmc_result_inference_t inference_cppWithCovariance(
     size_t transmissibility_index, Eigen::VectorXd susceptibility_index,
     size_t initial_infected_index, Rcpp::Function lprior, bool pass_prior,
     Rcpp::Function lpeak_prior, bool pass_peak, size_t no_age_groups,
-    size_t no_risk_groups, bool uk_prior, size_t nburn = 0,
-    size_t nbatch = 1000, size_t blen = 1, double abs_err = 1e-5) {
+    size_t no_risk_groups, bool uk_prior, Eigen::MatrixXi school_rate,
+    size_t nburn = 0, size_t nbatch = 1000, size_t blen = 1, double abs_err = 1e-5) {
   auto proposal_state =
       proposal::initialize(means, covariance, covariance_weight);
   return inference_cppWithProposal(
@@ -350,7 +350,7 @@ mcmc_result_inference_t inference_cppWithCovariance(
       proposal_state, mapping, risk_ratios, epsilon_index, psi_index,
       transmissibility_index, susceptibility_index, initial_infected_index,
       lprior, pass_prior, lpeak_prior, pass_peak, no_age_groups, no_risk_groups,
-      uk_prior, nburn, nbatch, blen);
+      uk_prior, school_rate, nburn, nbatch, blen);
 }
 
 //' MCMC based inference of the parameter values given the different data sets
@@ -384,7 +384,8 @@ mcmc_result_inference_t inference_cpp(
     size_t transmissibility_index, Eigen::VectorXd susceptibility_index,
     size_t initial_infected_index, Rcpp::Function lprior, bool pass_prior,
     Rcpp::Function lpeak_prior, bool pass_peak, size_t no_age_groups,
-    size_t no_risk_groups, bool uk_prior, size_t nburn = 0,
+    size_t no_risk_groups, bool uk_prior, Eigen::MatrixXi school_rate,
+    size_t nburn = 0,
     size_t nbatch = 1000, size_t blen = 1, double abs_err = 1e-5) {
   auto proposal_state = proposal::initialize(initial.size());
   Eigen::VectorXd contact_ids(polymod_data.rows());
@@ -396,8 +397,8 @@ mcmc_result_inference_t inference_cpp(
       vaccine_calendar, polymod_data, initial, contact_ids, proposal_state,
       mapping, risk_ratios, epsilon_index, psi_index, transmissibility_index,
       susceptibility_index, initial_infected_index, lprior, pass_prior,
-      lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, nburn,
-      nbatch, blen, abs_err);
+      lpeak_prior, pass_peak, no_age_groups, no_risk_groups, uk_prior, school_rate,
+      nburn, nbatch, blen, abs_err);
 }
 
 

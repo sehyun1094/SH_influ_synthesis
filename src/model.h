@@ -60,7 +60,8 @@ namespace flu
             const vaccine::vaccine_t &vaccine_programme,
             size_t minimal_resolution = 24,
             const boost::posix_time::ptime &starting_time = 
-                getTimeFromWeekYear( 35, 1970 ) );
+                getTimeFromWeekYear( 35, 1970 ) ,
+            const Eigen::MatrixXi &school_rate );
 
     cases_t infectionODE(
             const Eigen::VectorXd &Npop,  
@@ -70,7 +71,8 @@ namespace flu
             const Eigen::MatrixXd &contact_regular, 
             double transmissibility,
             const vaccine::vaccine_t &vaccine_programme,
-            const std::vector<boost::posix_time::ptime> &times );
+            const std::vector<boost::posix_time::ptime> &times ,
+            const Eigen::MatrixXi &school_rate );
 
     void days_to_weeks(double *, double *);
     void days_to_weeks_no_class(double *, double *);

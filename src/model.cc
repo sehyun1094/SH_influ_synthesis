@@ -236,7 +236,8 @@ namespace flu
             contact_regular, transmissibility,
             vaccine_programme,
             minimal_resolution, 
-            starting_time );
+            starting_time,
+            school_rate );
     }
 
     cases_t infectionODE(
@@ -247,7 +248,8 @@ namespace flu
             const Eigen::MatrixXd &contact_regular, 
             double transmissibility,
             const vaccine::vaccine_t &vaccine_programme,
-            const std::vector<boost::posix_time::ptime> &times )
+            const std::vector<boost::posix_time::ptime> &times,
+            const Eigen::MatrixXi &school_rate )
     {
         namespace bt = boost::posix_time;
  
@@ -343,12 +345,19 @@ namespace flu
                     date_id < vaccine_programme.calendar.rows() )
                 vacc_rates = vaccine_programme.calendar.row(date_id); 
             //Rcpp::Rcout << "Densities " << densities << std::endl;
+
+            // make transmission_regular2
+            Eigen::MatrixXd transmission_regular2 = transmission_regular;
+            transmission_regular2(1, 1) *= school_rate(step_count, 0);
+            transmission_regular2(2, 2) *= school_rate(step_count, 1);
+
+
             auto n_cases = new_cases( densities, current_time,
                     next_time, dt,
                     Npop,
                     vacc_rates,
                     vaccine_programme.efficacy,
-                    transmission_regular,
+                    transmission_regular2,
                     a1, a2, g1, g2 );
 
             /* DEBUG This is a good sanity check if run into problems
@@ -381,7 +390,8 @@ namespace flu
             const Eigen::MatrixXd &contact_regular, double transmissibility,
             const vaccine::vaccine_t &vaccine_programme,
             size_t minimal_resolution, 
-            const boost::posix_time::ptime &starting_time )
+            const boost::posix_time::ptime &starting_time,
+            const Eigen::MatrixXi &school_rate )
     {
  
         namespace bt = boost::posix_time;
@@ -408,7 +418,8 @@ namespace flu
         return infectionODE( Npop, seed_vec, tlatent, tinfectious,
                 s_profile, contact_regular,
                 transmissibility, vaccine_programme,
-                times );
+                times ,
+                school_rate);
     }
 
     Eigen::MatrixXd days_to_weeks_AG(const cases_t &simulation,
