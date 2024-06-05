@@ -239,13 +239,13 @@ Rcpp::DataFrame infectionODEs(
         datesC.push_back( date_to_ptime( d ) );
     }
 
-    Eigen::MatrixXi school_rate = Eigen::MatrixXi::Constant(52, 2, 1);
+    Eigen::MatrixXi school_rate = ;
 
     auto result = flu::infectionODE(
         popv, initial_infected, 
         infection_delays[0], infection_delays[1],
         susceptibility, contact_matrix, transmissibility,
-        vaccine_calendar, datesC, school_rate );
+        vaccine_calendar, datesC);
 
     Rcpp::List resultList( dim + 1 );
     Rcpp::CharacterVector columnNames;

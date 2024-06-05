@@ -228,7 +228,6 @@ namespace flu
         auto seed_vec = flu::data::separate_into_risk_groups( 
                 seeding_infectious, risk_proportions  );
 
-        Eigen::MatrixXi school_rate = Eigen::MatrixXi::Constant(52, 2, 1);
 
         return infectionODE(
             Npop,  
@@ -238,8 +237,7 @@ namespace flu
             contact_regular, transmissibility,
             vaccine_programme,
             minimal_resolution, 
-            starting_time,
-            school_rate );
+            starting_time);
     }
 
     cases_t infectionODE(
