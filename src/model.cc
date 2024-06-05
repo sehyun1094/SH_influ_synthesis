@@ -228,6 +228,8 @@ namespace flu
         auto seed_vec = flu::data::separate_into_risk_groups( 
                 seeding_infectious, risk_proportions  );
 
+        Eigen::MatrixXi school_rate = Eigen::MatrixXi::Constant(52, 2, 1)
+
         return infectionODE(
             Npop,  
             seed_vec, 
