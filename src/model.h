@@ -59,9 +59,9 @@ namespace flu
             const Eigen::MatrixXd &contact_regular, double, 
             const vaccine::vaccine_t &vaccine_programme,
             size_t minimal_resolution = 24,
+            const Eigen::MatrixXi &school_rate = Eigen::MatrixXi::Constant(52, 2, 1),
             const boost::posix_time::ptime &starting_time = 
-                getTimeFromWeekYear( 35, 1970 ),
-            const Eigen::MatrixXi &school_rate = Eigen::MatrixXi::Constant(52, 2, 1));
+                getTimeFromWeekYear( 35, 1970 ));
 
     cases_t infectionODE(
             const Eigen::VectorXd &Npop,  
