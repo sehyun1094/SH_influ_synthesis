@@ -214,7 +214,8 @@ namespace flu
             const Eigen::VectorXd &s_profile, 
             const Eigen::MatrixXd &contact_regular, double transmissibility,
             const vaccine::vaccine_t &vaccine_programme,
-            size_t minimal_resolution, 
+            size_t minimal_resolution,
+            const Eigen::MatrixXi &school_rate, 
             const boost::posix_time::ptime &starting_time )
     {
         // This splits seeding_infectious into a risk groups
@@ -237,7 +238,7 @@ namespace flu
             contact_regular, transmissibility,
             vaccine_programme,
             minimal_resolution, 
-            starting_time);
+            school_rate, starting_time);
     }
 
     cases_t infectionODE(
