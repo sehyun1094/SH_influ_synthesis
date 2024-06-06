@@ -276,7 +276,7 @@ inference <- function(demography, ili, mon_pop, n_pos, n_samples,
                               lprior, pass_prior, lpeak_prior, pass_peak,
                               no_age_groups, no_risk_groups, uk_defaults,
                               school_rate, 
-                              nburn, nbatch, blen, abs_err,
+                              nburn, nbatch, blen, abs_err
                               )
   }
   if (is.null(names(initial_par))) {
