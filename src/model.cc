@@ -352,10 +352,10 @@ namespace flu
             transmission_regular2(1, 1) = transmission_regular2(1, 1) * school_rate(step_count, 0);
             transmission_regular2(2, 2) = transmission_regular2(2, 2) * school_rate(step_count, 1);
             // print transmission_regular2
-            std::cout << "step_count: " << step_count << std::endl;
-            std::cout << "transmission_regular2:" << std::endl;
-            std::cout << transmission_regular2 << std::endl;
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            // std::cout << "step_count: " << step_count << std::endl;
+            // std::cout << "transmission_regular2:" << std::endl;
+            // std::cout << transmission_regular2 << std::endl;
+            // std::this_thread::sleep_for(std::chrono::seconds(1));
             
             auto n_cases = new_cases( densities, current_time,
                     next_time, dt,
