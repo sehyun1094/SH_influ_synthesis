@@ -349,8 +349,8 @@ namespace flu
 
             // make transmission_regular2
             Eigen::MatrixXd transmission_regular2 = transmission_regular;
-            transmission_regular2(1, 1) = std::ceil(transmission_regular2(0, 0) * school_rate(step_count, 0));
-            transmission_regular2(2, 2) = std::ceil(transmission_regular2(1, 1) * school_rate(step_count, 1));
+            transmission_regular2(1, 1) = transmission_regular2(1, 1) * school_rate(step_count, 0);
+            transmission_regular2(2, 2) = transmission_regular2(2, 2) * school_rate(step_count, 1);
             // print transmission_regular2
             std::cout << "step_count: " << step_count << std::endl;
             std::cout << "transmission_regular2:" << std::endl;
