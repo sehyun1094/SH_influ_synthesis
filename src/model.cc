@@ -1,6 +1,8 @@
 #include "model.h"
 #include <cmath>  // std::ceil
 #include "ode.h"
+#include <chrono>  // 시간 관련 기능을 제공하는 헤더
+#include <thread>  // 스레드 관련 기능을 제공하는 헤더
 
 inline long double safe_sum_log(long double a, long double b) {
   // The general algorithm
@@ -349,10 +351,11 @@ namespace flu
             Eigen::MatrixXd transmission_regular2 = transmission_regular;
             transmission_regular2(1, 1) = std::ceil(transmission_regular2(0, 0) * school_rate(step_count, 0));
             transmission_regular2(2, 2) = std::ceil(transmission_regular2(1, 1) * school_rate(step_count, 1));
-            // // print transmission_regular2
-            // std::cout << "step_count: " << step_count << std::endl;
-            // std::cout << "transmission_regular2:" << std::endl;
-            // std::cout << transmission_regular2 << std::endl;
+            // print transmission_regular2
+            std::cout << "step_count: " << step_count << std::endl;
+            std::cout << "transmission_regular2:" << std::endl;
+            std::cout << transmission_regular2 << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             
             auto n_cases = new_cases( densities, current_time,
                     next_time, dt,
