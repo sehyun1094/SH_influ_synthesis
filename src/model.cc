@@ -278,7 +278,7 @@ namespace flu
                 transmission_regular(i,j)*=transmissibility*s_profile[i];
             }
         }
-        transmission_regular.setZero();
+        
         /*initialisation, densities.segment(ode_id(nag,VACC_LOW,S),nag),E,I,densities.segment(ode_id(nag,VACC_LOW,R),nag)*/
         for(size_t i=0;i<nag;i++)
         {
