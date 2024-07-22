@@ -237,6 +237,10 @@ mcmc_result_inference_t inference_cppWithProposal(
     auto prop_parameters =
         proposal::sherlock(k, curr_parameters, proposal_state);
 
+    // Fix transimissibility and initial_infected.
+    prop_parameters[transmissibility_index] = curr_parameters[transmissibility_index]
+    prop_parameters[initial_infected_index] = curr_parameters[initial_infected_index]
+
     auto prior_ratio =
         log_prior_ratio_f(prop_parameters, curr_parameters, false);
 

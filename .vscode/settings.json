@@ -61,7 +61,9 @@
         "xlocmes": "cpp",
         "xlocmon": "cpp",
         "xlocnum": "cpp",
-        "xloctime": "cpp"
+        "xloctime": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     },
     "r.lsp.promptToInstall": false
 }
