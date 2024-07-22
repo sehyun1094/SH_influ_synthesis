@@ -67,9 +67,9 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
         auto prop_parameters = proposal::sherlock( k,
                 curr_parameters,
                 proposal_state );
-        // Fix transimissibility and initial_infected.
-        prop_parameters[transmissibility_index] = curr_parameters[transmissibility_index];
-        prop_parameters[initial_infected_index] = curr_parameters[initial_infected_index];
+        // // Fix transimissibility and initial_infected.
+        // prop_parameters[transmissibility_index] = curr_parameters[transmissibility_index];
+        // prop_parameters[initial_infected_index] = curr_parameters[initial_infected_index];
         
         if (verbose) {
             Rcpp::Rcout << "Proposed parameters\t" << prop_parameters.transpose() <<
