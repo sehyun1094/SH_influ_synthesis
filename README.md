@@ -24,14 +24,14 @@ Then use devtools to install fluEvidenceSynthesis by using the following command
 
 ```{r}
 library(devtools)
-install_github("MJomaba/flu-evidence-synthesis", dependencies = TRUE)
+install_github("sehyun1094/SH_influ_synthesis", dependencies = TRUE)
 ```
 
 The above will install the package without the vignettes. To install them as well you first need to install [odin](https://github.com/mrc-ide/odin#installation) following [these instructions](https://github.com/mrc-ide/odin#installation), because one of the vignettes depends on that package. After installing odin you can install the package and its vignettes as follows.
 
 ```{r}
 library(devtools)
-install_github("MJomaba/flu-evidence-synthesis", dependencies = TRUE, build_vignettes = TRUE)
+install_github("sehyun1094/SH_influ_synthesis", dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 
