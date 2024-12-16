@@ -37,31 +37,31 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
 
     size_t sampleCount = 0;
     int k = 0;
-    // progress bar
-    const char bar = '='; // 프로그레스바 문자  
-	const char blank = ' '; // 비어있는 프로그레스바 문자  
-	const int LEN = 20; // 프로그레스바 길이  
-    int count = 0; // 현재 진행된 작업  
-	int iii; // 반복문 전용 변수  
+    
+    const char bar = '='; 
+	const char blank = ' '; 
+	const int LEN = 20; 
+    int count = 0; 
+	int iii; 
     float tick = (float)100/LEN;
-	int bar_count; // 프로그레스바 갯수 저장 변수  
-	float percent; // 퍼센트 저장 변수  
+	int bar_count; 
+	float percent; 
     while(sampleCount<nbatch)
     {
-        // progress bar
+        
         printf("\r%d/%d [", sampleCount, nbatch);
-        percent = (float)sampleCount/MAX*100; // 퍼센트 계산  
-        bar_count = percent/tick; // 프로그레스바 갯수 계산  
-        for(iii=0; iii<LEN; iii++) { // LEN길이의 프로그레스바 출력  
-			if(bar_count > iii) { // 프로그레스바 길이보다 i가 작으면 
+        percent = (float)sampleCount/MAX*100; 
+        bar_count = percent/tick; 
+        for(iii=0; iii<LEN; iii++) { 
+			if(bar_count > iii) { 
 				printf("%c", bar);
-			} else { // i가 더 커지면  
+			} else { 
 				printf("%c", blank);
 			}
 		}
-		printf("] %0.2f%%", percent); // 퍼센트 출력
+		printf("] %0.2f%%", percent); 
 
-        // 원래 코드
+        
         ++k;
 
         if (verbose) {
