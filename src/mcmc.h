@@ -38,28 +38,28 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     size_t sampleCount = 0;
     int k = 0;
     
-    const char bar = '='; 
-	const char blank = ' '; 
-	const int LEN = 20; 
-    int count = 0; 
-	int iii; 
-    float tick = (float)100/LEN;
-	int bar_count; 
-	float percent; 
+    // const char bar = '='; 
+	// const char blank = ' '; 
+	// const int LEN = 20; 
+    // int count = 0; 
+	// int iii; 
+    // float tick = (float)100/LEN;
+	// int bar_count; 
+	// float percent; 
     while(sampleCount<nbatch)
     {
         
-        printf("\r%d/%d [", sampleCount, nbatch);
-        percent = (float)sampleCount/MAX*100; 
-        bar_count = percent/tick; 
-        for(iii=0; iii<LEN; iii++) { 
-			if(bar_count > iii) { 
-				printf("%c", bar);
-			} else { 
-				printf("%c", blank);
-			}
-		}
-		printf("] %0.2f%%", percent); 
+        // printf("\r%d/%d [", sampleCount, nbatch);
+        // percent = (float)sampleCount/MAX*100; 
+        // bar_count = percent/tick; 
+        // for(iii=0; iii<LEN; iii++) { 
+		// 	if(bar_count > iii) { 
+		// 		printf("%c", bar);
+		// 	} else { 
+		// 		printf("%c", blank);
+		// 	}
+		// }
+		// printf("] %0.2f%%", percent); 
 
         
         ++k;
