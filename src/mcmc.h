@@ -8,7 +8,7 @@
 
 inline void updateProgressBar(size_t current, size_t total) {
     int barWidth = 50; // Progress Bar의 너비
-    double progress = static_cast<double>(current) / static_cast<double>(total); // 현재 진행률 계산
+    // double progress = static_cast<double>(current) / static_cast<double>(total); // 현재 진행률 계산
     // int pos = static_cast<int>(barWidth * progress);
 
     // std::cout << "["; // Progress Bar 시작
