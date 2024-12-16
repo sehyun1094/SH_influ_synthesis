@@ -36,7 +36,7 @@ mcmc_result_inference_t inference_cppWithProposal(
     Rcpp::Function lprior, bool pass_prior, Rcpp::Function lpeak_prior,
     bool pass_peak, size_t no_age_groups, size_t no_risk_groups, bool uk_prior, Eigen::MatrixXi school_rate,
     size_t nburn = 0, size_t nbatch = 1000, size_t blen = 1,
-    double abs_err = 1e-5) {
+    double abs_err = 1e-5, bool display_progress = true) {
   // Eigen::Matrix<double, Eigen::Dynamic, 3, Eigen::RowMajor> mapping,
   mcmc_result_inference_t results;
   results.batch =
