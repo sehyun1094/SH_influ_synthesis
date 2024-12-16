@@ -9,20 +9,20 @@
 inline void updateProgressBar(size_t current, size_t total) {
     int barWidth = 50; // Progress Bar의 너비
     double progress = static_cast<double>(current) / total; // 현재 진행률 계산
-    int pos = static_cast<int>(barWidth * progress);
+    // int pos = static_cast<int>(barWidth * progress);
 
-    std::cout << "["; // Progress Bar 시작
-    for (int i = 0; i < barWidth; ++i) {
-        if (i < pos) {
-            std::cout << "="; // 완료된 부분
-        } else if (i == pos) {
-            std::cout << ">"; // 진행 중인 부분
-        } else {
-            std::cout << " "; // 남은 부분
-        }
-    }
-    std::cout << "] " << int(progress * 100.0) << "%\r"; // 퍼센트와 함께 출력
-    std::cout.flush(); // 출력 강제 업데이트
+    // std::cout << "["; // Progress Bar 시작
+    // for (int i = 0; i < barWidth; ++i) {
+    //     if (i < pos) {
+    //         std::cout << "="; // 완료된 부분
+    //     } else if (i == pos) {
+    //         std::cout << ">"; // 진행 중인 부분
+    //     } else {
+    //         std::cout << " "; // 남은 부분
+    //     }
+    // }
+    // std::cout << "] " << int(progress * 100.0) << "%\r"; // 퍼센트와 함께 출력
+    // std::cout.flush(); // 출력 강제 업데이트
 }
 
 namespace flu {
