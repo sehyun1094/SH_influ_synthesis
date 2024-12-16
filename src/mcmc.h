@@ -6,7 +6,7 @@
 
 #include "proposal.h"
 
-inline void updateProgressBar(int current, int total) {
+inline void updateProgressBar(size_t current, size_t total) {
     int barWidth = 50; // Progress Bar의 너비
     double progress = static_cast<double>(current) / total; // 현재 진행률 계산
     int pos = static_cast<int>(barWidth * progress);
@@ -68,7 +68,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
 	// float percent; 
     while(sampleCount<nbatch)
     {
-        // updateProgressBar(sampleCount, nbatch)
+        updateProgressBar(sampleCount, nbatch)
         // Rprintf("\r%d/%d [", sampleCount, nbatch);
         // percent = (float)sampleCount/nbatch*100; 
         // bar_count = percent/tick; 
