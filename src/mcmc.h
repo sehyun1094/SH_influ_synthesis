@@ -40,7 +40,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     size_t sampleCount = 0;
     int k = 0;
 
-    // Progress p(nbatch, display_progress);
+    Progress p(nbatch, display_progress);
     while(sampleCount<nbatch)
     {
         ++k;
@@ -164,7 +164,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
                     std::chrono::duration_cast<std::chrono::nanoseconds>(
                             std::chrono::high_resolution_clock::now() -
                             start_time).count() << std::endl;
-            // p.increment();
+            p.increment();
             ++sampleCount;
         }
     }
