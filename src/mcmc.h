@@ -68,7 +68,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
 	// float percent; 
     while(sampleCount<nbatch)
     {
-        updateProgressBar(sampleCount, nbatch)
+        // updateProgressBar(sampleCount, nbatch)
         // Rprintf("\r%d/%d [", sampleCount, nbatch);
         // percent = (float)sampleCount/nbatch*100; 
         // bar_count = percent/tick; 
