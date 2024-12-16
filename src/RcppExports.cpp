@@ -7,6 +7,8 @@
 
 using namespace Rcpp;
 
+
+
 // inference_cppWithCovariance
 mcmc_result_inference_t inference_cppWithCovariance(std::vector<size_t> demography, std::vector<size_t> age_group_limits, Eigen::MatrixXi ili, Eigen::MatrixXi mon_pop, Eigen::MatrixXi n_pos, Eigen::MatrixXi n_samples, flu::vaccine::vaccine_t vaccine_calendar, Eigen::MatrixXi polymod_data, Eigen::VectorXd initial_parameters, Eigen::VectorXd initial_contact_ids, Eigen::VectorXd means, Eigen::MatrixXd covariance, size_t covariance_weight, Eigen::MatrixXd mapping, Eigen::VectorXd risk_ratios, Eigen::VectorXd epsilon_index, size_t psi_index, size_t transmissibility_index, Eigen::VectorXd susceptibility_index, size_t initial_infected_index, Rcpp::Function lprior, bool pass_prior, Rcpp::Function lpeak_prior, bool pass_peak, size_t no_age_groups, size_t no_risk_groups, bool uk_prior, Eigen::MatrixXi school_rate, size_t nburn, size_t nbatch, size_t blen, double abs_err);
 RcppExport SEXP _fluEvidenceSynthesis_inference_cppWithCovariance(SEXP demographySEXP, SEXP age_group_limitsSEXP, SEXP iliSEXP, SEXP mon_popSEXP, SEXP n_posSEXP, SEXP n_samplesSEXP, SEXP vaccine_calendarSEXP, SEXP polymod_dataSEXP, SEXP initial_parametersSEXP, SEXP initial_contact_idsSEXP, SEXP meansSEXP, SEXP covarianceSEXP, SEXP covariance_weightSEXP, SEXP mappingSEXP, SEXP risk_ratiosSEXP, SEXP epsilon_indexSEXP, SEXP psi_indexSEXP, SEXP transmissibility_indexSEXP, SEXP susceptibility_indexSEXP, SEXP initial_infected_indexSEXP, SEXP lpriorSEXP, SEXP pass_priorSEXP, SEXP lpeak_priorSEXP, SEXP pass_peakSEXP, SEXP no_age_groupsSEXP, SEXP no_risk_groupsSEXP, SEXP uk_priorSEXP, SEXP school_rateSEXP, SEXP nburnSEXP, SEXP nbatchSEXP, SEXP blenSEXP, SEXP abs_errSEXP) {

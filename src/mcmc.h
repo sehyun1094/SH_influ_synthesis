@@ -2,8 +2,28 @@
 #define FLU_MCMC_HH
 
 #include<chrono>
+#include <iostream>
 
 #include "proposal.h"
+
+inline void updateProgressBar(int current, int total) {
+    int barWidth = 50; // Progress Bar의 너비
+    double progress = static_cast<double>(current) / total; // 현재 진행률 계산
+    int pos = static_cast<int>(barWidth * progress);
+
+    std::cout << "["; // Progress Bar 시작
+    for (int i = 0; i < barWidth; ++i) {
+        if (i < pos) {
+            std::cout << "="; // 완료된 부분
+        } else if (i == pos) {
+            std::cout << ">"; // 진행 중인 부분
+        } else {
+            std::cout << " "; // 남은 부분
+        }
+    }
+    std::cout << "] " << int(progress * 100.0) << "%\r"; // 퍼센트와 함께 출력
+    std::cout.flush(); // 출력 강제 업데이트
+}
 
 namespace flu {
 
@@ -38,28 +58,28 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     size_t sampleCount = 0;
     int k = 0;
     
-    const char bar = '='; 
-	const char blank = ' '; 
-	const int LEN = 20; 
-    int count = 0; 
-	int iii; 
-    float tick = (float)100/LEN;
-	int bar_count; 
-	float percent; 
+    // const char bar = '='; 
+	// const char blank = ' '; 
+	// const int LEN = 20; 
+    // int count = 0; 
+	// int iii; 
+    // float tick = (float)100/LEN;
+	// int bar_count; 
+	// float percent; 
     while(sampleCount<nbatch)
     {
-        
-        Rprintf("\r%d/%d [", sampleCount, nbatch);
-        percent = (float)sampleCount/nbatch*100; 
-        bar_count = percent/tick; 
-        for(iii=0; iii<LEN; iii++) { 
-			if(bar_count > iii) { 
-				Rprintf("%c", bar);
-			} else { 
-				Rprintf("%c", blank);
-			}
-		}
-		Rprintf("] %0.2f%%", percent); 
+        updateProgressBar(sampleCount, nbatch)
+        // Rprintf("\r%d/%d [", sampleCount, nbatch);
+        // percent = (float)sampleCount/nbatch*100; 
+        // bar_count = percent/tick; 
+        // for(iii=0; iii<LEN; iii++) { 
+		// 	if(bar_count > iii) { 
+		// 		Rprintf("%c", bar);
+		// 	} else { 
+		// 		Rprintf("%c", blank);
+		// 	}
+		// }
+		// Rprintf("] %0.2f%%", percent); 
 
         
         ++k;

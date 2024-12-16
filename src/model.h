@@ -15,6 +15,7 @@
 #include "rcppwrap.h"
 #include<RcppEigen.h>
 
+
 namespace flu
 {
     boost::posix_time::ptime getTimeFromWeekYear( int week, int year );
