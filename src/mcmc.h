@@ -21,7 +21,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
         const Func3 &outfun, const Func4 &acceptfun,
         size_t nburn,
         const Eigen::VectorXd &initial, proposal::proposal_state_t proposal_state,
-        size_t nbatch, size_t blen = 1, bool verbose = false )
+        size_t nbatch, size_t blen = 1, bool verbose = false, bool display_progress = true)
 {
     mcmc_result_t result;
     result.batch = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>( nbatch, initial.size() );
@@ -40,7 +40,6 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     size_t sampleCount = 0;
     int k = 0;
 
-    bool display_progress = true
     // Progress p(nbatch, display_progress);
     while(sampleCount<nbatch)
     {
