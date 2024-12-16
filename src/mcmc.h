@@ -49,17 +49,17 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     while(sampleCount<nbatch)
     {
         
-        printf("\r%d/%d [", sampleCount, nbatch);
+        Rprintf("\r%d/%d [", sampleCount, nbatch);
         percent = (float)sampleCount/nbatch*100; 
         bar_count = percent/tick; 
         for(iii=0; iii<LEN; iii++) { 
 			if(bar_count > iii) { 
-				printf("%c", bar);
+				Rprintf("%c", bar);
 			} else { 
-				printf("%c", blank);
+				Rprintf("%c", blank);
 			}
 		}
-		printf("] %0.2f%%", percent); 
+		Rprintf("] %0.2f%%", percent); 
 
         
         ++k;
