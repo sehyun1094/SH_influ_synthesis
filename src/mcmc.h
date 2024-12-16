@@ -2,8 +2,8 @@
 #define FLU_MCMC_HH
 
 #include<chrono>
-#include <Rcpp.h>
-#include <iostream>
+#include <progress.hpp>
+#include <progress_bar.hpp>
 
 #include "proposal.h"
 
@@ -40,48 +40,10 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     size_t sampleCount = 0;
     int k = 0;
 
-    
-    int barWidth = 50; // Progress Bar의 너비
-    
-    // const char bar = '='; 
-	// const char blank = ' '; 
-	// const int LEN = 20; 
-    // int count = 0; 
-	// int iii; 
-    // float tick = (float)100/LEN;
-	// int bar_count; 
-	// float percent; 
+    bool display_progress = true
+    Progress p(nbatch, display_progress);
     while(sampleCount<nbatch)
     {
-        double progress = static_cast<double>(sampleCount) / static_cast<double>(nbatch); // 현재 진행률 계산
-        int pos = static_cast<int>(barWidth * progress);
-
-        Rcpp::Rcout << "["; // Progress Bar 시작
-        for (int i = 0; i < barWidth; ++i) {
-            if (i < pos) {
-                Rcpp::Rcout << "="; // 완료된 부분
-            } else if (i == pos) {
-                Rcpp::Rcout << ">"; // 진행 중인 부분
-            } else {
-                Rcpp::Rcout << " "; // 남은 부분
-            }
-        }
-        Rcpp::Rcout << "] " << int(progress * 100.0) << "%\r"; // 퍼센트와 함께 출력
-        Rcpp::Rcout.flush(); // 출력 강제 업데이트
-
-        // Rprintf("\r%d/%d [", sampleCount, nbatch);
-        // percent = (float)sampleCount/nbatch*100; 
-        // bar_count = percent/tick; 
-        // for(iii=0; iii<LEN; iii++) { 
-		// 	if(bar_count > iii) { 
-		// 		Rprintf("%c", bar);
-		// 	} else { 
-		// 		Rprintf("%c", blank);
-		// 	}
-		// }
-		// Rprintf("] %0.2f%%", percent); 
-
-        
         ++k;
 
         if (verbose) {
@@ -203,7 +165,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
                     std::chrono::duration_cast<std::chrono::nanoseconds>(
                             std::chrono::high_resolution_clock::now() -
                             start_time).count() << std::endl;
-
+            p.increment();
             ++sampleCount;
         }
     }
