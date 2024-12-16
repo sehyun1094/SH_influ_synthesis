@@ -38,14 +38,14 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     size_t sampleCount = 0;
     int k = 0;
     
-    // const char bar = '='; 
-	// const char blank = ' '; 
-	// const int LEN = 20; 
-    // int count = 0; 
-	// int iii; 
-    // float tick = (float)100/LEN;
-	// int bar_count; 
-	// float percent; 
+    const char bar = '='; 
+	const char blank = ' '; 
+	const int LEN = 20; 
+    int count = 0; 
+	int iii; 
+    float tick = (float)100/LEN;
+	int bar_count; 
+	float percent; 
     while(sampleCount<nbatch)
     {
         
