@@ -15,25 +15,6 @@ struct mcmc_result_t
     Eigen::VectorXd llikelihoods;
 };
 
-inline void updateProgressBar(size_t current, size_t total) {
-    int barWidth = 50; // Progress Bar의 너비
-    double progress = static_cast<double>(current) / static_cast<double>(total); // 현재 진행률 계산
-    int pos = static_cast<int>(barWidth * progress);
-
-    std::cout << "["; // Progress Bar 시작
-    for (int i = 0; i < barWidth; ++i) {
-        if (i < pos) {
-            std::cout << "="; // 완료된 부분
-        } else if (i == pos) {
-            std::cout << ">"; // 진행 중인 부분
-        } else {
-            std::cout << " "; // 남은 부분
-        }
-    }
-    std::cout << "] " << int(progress * 100.0) << "%\r"; // 퍼센트와 함께 출력
-    std::cout.flush(); // 출력 강제 업데이트
-};
-
 template<typename Func1, typename Func2, typename Func3, typename Func4>
 mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikelihood, 
         const Func3 &outfun, const Func4 &acceptfun,
@@ -57,6 +38,9 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
 
     size_t sampleCount = 0;
     int k = 0;
+
+    
+    int barWidth = 50; // Progress Bar의 너비
     
     // const char bar = '='; 
 	// const char blank = ' '; 
@@ -68,7 +52,22 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
 	// float percent; 
     while(sampleCount<nbatch)
     {
-        updateProgressBar(sampleCount, nbatch)
+        double progress = static_cast<double>(sampleCount) / static_cast<double>(nbatch); // 현재 진행률 계산
+        int pos = static_cast<int>(barWidth * progress);
+
+        std::cout << "["; // Progress Bar 시작
+        for (int i = 0; i < barWidth; ++i) {
+            if (i < pos) {
+                std::cout << "="; // 완료된 부분
+            } else if (i == pos) {
+                std::cout << ">"; // 진행 중인 부분
+            } else {
+                std::cout << " "; // 남은 부분
+            }
+        }
+        std::cout << "] " << int(progress * 100.0) << "%\r"; // 퍼센트와 함께 출력
+        std::cout.flush(); // 출력 강제 업데이트
+
         // Rprintf("\r%d/%d [", sampleCount, nbatch);
         // percent = (float)sampleCount/nbatch*100; 
         // bar_count = percent/tick; 
