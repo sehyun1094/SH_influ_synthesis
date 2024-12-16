@@ -2,10 +2,10 @@
 #define FLU_MCMC_HH
 
 #include<chrono>
-#include <progress.hpp>
-#include <progress_bar.hpp>
 
 #include "proposal.h"
+#include "progress.hpp"
+#include "progress_bar.hpp"
 
 namespace flu {
 
