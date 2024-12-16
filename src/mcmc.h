@@ -49,7 +49,7 @@ mcmc_result_t adaptiveMCMCWithProposal( const Func1 &lprior, const Func2 &llikel
     while(sampleCount<nbatch)
     {
         // progress bar
-        printf("\r%d/%d [", sampleCount, nbatch)
+        printf("\r%d/%d [", sampleCount, nbatch);
         percent = (float)sampleCount/MAX*100; // 퍼센트 계산  
         bar_count = percent/tick; // 프로그레스바 갯수 계산  
         for(iii=0; iii<LEN; iii++) { // LEN길이의 프로그레스바 출력  
